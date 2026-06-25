@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="PyDev is a native Python notebook IDE for iPhone, iPad, and macOS with an embedded runtime, local workspaces, examples, and a managed package registry.">
-  <meta property="og:title" content="PyDev - Native Python IDE for iOS and macOS">
-  <meta property="og:description" content="Write notebooks, run Python, manage packages, and keep files in a native Apple-platform workspace.">
+  <meta name="description" content="PyDev is a native Python notebook IDE for iPadOS, iOS, and macOS with Apple Intelligence, AI providers, local workspaces, examples, and managed packages.">
+  <meta property="og:title" content="PyDev - Native Python IDE for iPadOS with AI">
+  <meta property="og:description" content="Use iPad as a native Python workspace with notebooks, Apple Intelligence, AI providers, local files, and managed packages.">
   <meta property="og:image" content="https://zhiluo20.github.io/pydev-wheelhouse/assets/pydev-icon.png">
   <meta property="og:url" content="https://zhiluo20.github.io/pydev-wheelhouse/">
   <meta name="theme-color" content="#f5f5f7">
   <link rel="icon" type="image/png" href="assets/pydev-icon.png">
-  <title>PyDev - Native Python IDE for iOS and macOS</title>
+  <title>PyDev - Native Python IDE for iPadOS with AI</title>
   <style>
     :root {
       --page: #f5f5f7;
@@ -140,9 +140,9 @@
     .hero {
       min-height: calc(100dvh - 64px);
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.72fr);
+      grid-template-columns: minmax(0, 0.72fr) minmax(520px, 1.28fr);
       align-items: center;
-      gap: 72px;
+      gap: 46px;
       padding-top: 64px;
       padding-bottom: 72px;
     }
@@ -222,9 +222,30 @@
 
     .hero-visual {
       position: relative;
-      min-height: 620px;
+      min-height: 560px;
       display: grid;
       place-items: center;
+    }
+
+    .ipad-shell {
+      width: min(790px, 58vw);
+      padding: 10px;
+      border-radius: 42px;
+      background: linear-gradient(145deg, #2c2c2e, #080809);
+      box-shadow: var(--shadow);
+      transform: rotate(0.8deg);
+    }
+
+    .ipad-screen {
+      overflow: hidden;
+      border-radius: 32px;
+      background: #f5f5f7;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .ipad-screen img {
+      width: 100%;
+      height: auto;
     }
 
     .device-shell {
@@ -258,16 +279,23 @@
     }
 
     .floating-card.package {
-      left: 0;
-      bottom: 56px;
+      left: 18px;
+      bottom: 34px;
       width: 210px;
       padding: 18px;
     }
 
     .floating-card.runtime {
-      right: 0;
-      top: 58px;
+      right: -6px;
+      top: 32px;
       width: 210px;
+      padding: 18px;
+    }
+
+    .floating-card.ai {
+      left: 40%;
+      bottom: -12px;
+      width: 260px;
       padding: 18px;
     }
 
@@ -385,6 +413,7 @@
     }
 
     .feature-tile h3,
+    .ai-card h3,
     .package-card h3,
     .step-card h3,
     .repo-card h3 {
@@ -395,6 +424,7 @@
     }
 
     .feature-tile p,
+    .ai-card p,
     .package-card p,
     .step-card p,
     .repo-card p {
@@ -420,9 +450,87 @@
       font: 14px/1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
+    .ai-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 34px;
+    }
+
+    .ai-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      padding: 32px;
+      box-shadow: 0 12px 44px rgba(29, 29, 31, 0.08);
+    }
+
+    .ai-card.hero-ai {
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at 72% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 16rem),
+        linear-gradient(145deg, var(--surface-strong), var(--soft-blue));
+    }
+
+    .ai-panel {
+      margin-top: 34px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface-strong) 74%, transparent);
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .ai-row {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--soft-gray) 62%, transparent);
+    }
+
+    .ai-row strong {
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .ai-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .ai-side-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .provider-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .provider-pill {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft-gray);
+      padding: 9px 13px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
     .screenshot-band {
       display: grid;
-      grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1fr);
+      grid-template-columns: 1fr;
       gap: 44px;
       align-items: center;
       border-radius: 40px;
@@ -435,6 +543,23 @@
     .screenshot-band .device-shell {
       margin: 0 auto;
       transform: none;
+    }
+
+    .screenshot-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 0.28fr);
+      gap: 24px;
+      align-items: end;
+    }
+
+    .screenshot-stage .ipad-shell {
+      width: 100%;
+      transform: none;
+    }
+
+    .screenshot-stage .device-shell {
+      width: min(230px, 100%);
+      transform: rotate(1.2deg);
     }
 
     .screenshot-copy h2 {
@@ -610,12 +735,14 @@
     @media (prefers-reduced-motion: no-preference) {
       .button,
       .feature-tile,
+      .ai-card,
       .repo-card,
       .step-card {
         transition: transform 220ms ease, box-shadow 220ms ease;
       }
 
       .feature-tile:hover,
+      .ai-card:hover,
       .repo-card:hover,
       .step-card:hover {
         transform: translateY(-4px);
@@ -627,7 +754,9 @@
 
       .hero,
       .intro-grid,
+      .ai-showcase,
       .screenshot-band,
+      .screenshot-stage,
       .package-layout {
         grid-template-columns: 1fr;
       }
@@ -638,7 +767,11 @@
       }
 
       .hero-visual {
-        min-height: 560px;
+        min-height: 500px;
+      }
+
+      .ipad-shell {
+        width: min(720px, 100%);
       }
 
       .feature-grid,
@@ -692,7 +825,7 @@
       }
 
       .hero-visual {
-        min-height: 520px;
+        min-height: auto;
       }
 
       .floating-card {
@@ -705,6 +838,20 @@
         width: min(300px, 82vw);
       }
 
+      .ipad-shell {
+        width: 100%;
+        padding: 6px;
+        border-radius: 26px;
+      }
+
+      .ipad-screen {
+        border-radius: 20px;
+      }
+
+      .ai-row {
+        grid-template-columns: 1fr;
+      }
+
       .metric-row,
       .tutorial-grid {
         grid-template-columns: 1fr;
@@ -714,6 +861,7 @@
       .icon-panel,
       .screenshot-band,
       .feature-tile,
+      .ai-card,
       .package-card,
       .repo-card,
       .package-cloud,
@@ -736,6 +884,7 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
+        <a href="#intelligence">AI</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#tutorial">Tutorial</a>
         <a href="#packages">Packages</a>
@@ -748,29 +897,34 @@
   <main id="top">
     <section class="section hero" aria-labelledby="hero-title">
       <div>
-        <p class="eyebrow">Native Python on Apple platforms</p>
-        <h1 id="hero-title">Python notebooks for Apple devices.</h1>
-        <p class="hero-copy">Write on iPhone, iPad, and Mac with notebooks, scripts, files, examples, and managed packages.</p>
+        <p class="eyebrow">Native Python for iPadOS</p>
+        <h1 id="hero-title">Python notebooks built for iPad.</h1>
+        <p class="hero-copy">Use iPad as the main workspace, with Apple Intelligence, AI providers, local files, examples, and managed packages.</p>
         <div class="hero-actions">
           <a class="button primary" href="https://github.com/zhiluo20/pydev-wheelhouse">Open GitHub</a>
-          <a class="button secondary" href="catalog/v1/index.json">View catalog</a>
+          <a class="button secondary" href="#intelligence">Explore AI</a>
         </div>
       </div>
-      <div class="hero-visual" aria-label="PyDev running an Iris notebook on iPhone">
-        <div class="device-shell">
-          <div class="device-screen">
-            <img src="assets/pydev-iphone-iris.png" width="476" height="565" alt="PyDev notebook showing the Iris dataset on iPhone">
+      <div class="hero-visual" aria-label="PyDev running an Iris notebook on iPadOS">
+        <div class="ipad-shell">
+          <div class="ipad-screen">
+            <img src="assets/pydev-ipad-iris.png" width="1800" height="1350" alt="PyDev notebook workspace running on iPadOS with a sidebar and code cells">
           </div>
         </div>
         <div class="floating-card runtime" aria-label="Runtime package count">
-          <p class="mini-label">Runtime wheels</p>
-          <p class="mini-value">17</p>
-          <p class="mini-note">Hash-checked pure Python packages.</p>
+          <p class="mini-label">Apple Intelligence</p>
+          <p class="mini-value">Local</p>
+          <p class="mini-note">Uses Foundation Models when available.</p>
         </div>
         <div class="floating-card package" aria-label="Native development wheel count">
-          <p class="mini-label">Native wheels</p>
-          <p class="mini-value">18</p>
-          <p class="mini-note">Prepared for signed iOS app payloads.</p>
+          <p class="mini-label">iPadOS workspace</p>
+          <p class="mini-value">Split</p>
+          <p class="mini-note">Sidebar and notebook detail stay visible.</p>
+        </div>
+        <div class="floating-card ai" aria-label="AI provider support">
+          <p class="mini-label">AI providers</p>
+          <p class="mini-value">4+</p>
+          <p class="mini-note">Apple, Claude, Codex, and custom endpoints.</p>
         </div>
       </div>
     </section>
@@ -796,7 +950,7 @@
 
     <section class="section" id="features" aria-labelledby="features-title">
       <h2 id="features-title">Everything expected from a small Python IDE.</h2>
-      <p class="lead">The product is built around notebook work, local file access, scientific examples, and a package model that respects iOS signing rules.</p>
+      <p class="lead">The product is built around iPad notebook work, local file access, scientific examples, AI assistance, and a package model that respects iOS signing rules.</p>
       <div class="feature-grid">
         <article class="feature-tile large blue">
           <div>
@@ -827,21 +981,75 @@ df.head()</code></pre>
       </div>
     </section>
 
+    <section class="section" id="intelligence" aria-labelledby="intelligence-title">
+      <h2 id="intelligence-title">Apple Intelligence and AI built into the editor.</h2>
+      <p class="lead">PyDev treats AI as a coding surface: inline previews, focused-cell patches, notebook context, and provider choices that fit each device.</p>
+      <div class="ai-showcase">
+        <article class="ai-card hero-ai">
+          <div>
+            <h3>On-device first when Apple Intelligence is available.</h3>
+            <p>The default Apple Intelligence provider uses Apple's Foundation Models through the system language model. No API key is required when the device supports it.</p>
+          </div>
+          <div class="ai-panel" aria-label="AI workflow examples">
+            <div class="ai-row">
+              <strong>Preview</strong>
+              <span>Inline completion appears as an AI preview and is inserted only after the user accepts it.</span>
+            </div>
+            <div class="ai-row">
+              <strong>Patch</strong>
+              <span>Focused-cell edits apply only to the selected code cell, keeping notebook context read-only.</span>
+            </div>
+            <div class="ai-row">
+              <strong>Explain</strong>
+              <span>Developer Tools can explain errors, suggest fixes, refactor code, and draft tests from the current source.</span>
+            </div>
+          </div>
+        </article>
+        <div class="ai-side-grid">
+          <article class="ai-card">
+            <h3>Choose the model stack.</h3>
+            <p>Use Apple Intelligence locally, or connect Claude, Codex, and custom OpenAI-compatible providers when a remote model is better for larger context.</p>
+            <div class="provider-list" aria-label="Supported AI providers">
+              <span class="provider-pill">Apple Intelligence</span>
+              <span class="provider-pill">Claude</span>
+              <span class="provider-pill">Codex</span>
+              <span class="provider-pill">Custom provider</span>
+            </div>
+          </article>
+          <article class="ai-card">
+            <h3>Private credentials.</h3>
+            <p>Remote provider keys and tokens are stored in Keychain and are not written into notebooks or scripts.</p>
+          </article>
+          <article class="ai-card">
+            <h3>Notebook-aware context.</h3>
+            <p>PyDev retrieves relevant notebook blocks for read-only context while keeping generated patches scoped to the source under edit.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="screenshots" aria-labelledby="screenshots-title">
       <div class="screenshot-band">
-        <div class="device-shell">
-          <div class="device-screen">
-            <img src="assets/pydev-iphone-iris.png" width="476" height="565" alt="PyDev iPhone screenshot with notebook output and Iris dataset table">
-          </div>
-        </div>
         <div class="screenshot-copy">
-          <h2 id="screenshots-title">Real notebooks on narrow screens.</h2>
-          <p class="lead">The interface is optimized for mobile width, readable output, and working notebooks that fetch data from the network when the user allows it.</p>
+          <h2 id="screenshots-title">iPadOS is the primary workspace.</h2>
+          <p class="lead">The wide layout keeps the project sidebar, notebook cells, kernel controls, and diagnostics visible at the same time. iPhone remains a useful companion for quick edits and checks.</p>
           <ul class="screen-list">
-            <li><strong>Executable examples</strong> The bundled Iris notebook downloads data from UCI and runs directly in the app.</li>
-            <li><strong>Responsive cells</strong> Code and outputs are constrained to the device width so long lines do not break the page.</li>
-            <li><strong>Local documents</strong> Users can keep files in the app workspace and open them from Files.</li>
+            <li><strong>Native split view</strong> iPadOS shows the workspace sidebar beside the active notebook or script editor.</li>
+            <li><strong>AI in reach</strong> The sparkle action connects editor completion and Developer Tools AI workflows to the current source.</li>
+            <li><strong>Companion iPhone path</strong> The same notebooks can run on narrow screens with wrapped cells and responsive outputs.</li>
           </ul>
+        </div>
+        <div class="screenshot-stage">
+          <div class="ipad-shell">
+            <div class="ipad-screen">
+              <img src="assets/pydev-ipad-iris.png" width="1800" height="1350" alt="PyDev iPadOS split-view notebook workspace">
+            </div>
+          </div>
+          <div class="device-shell">
+            <div class="device-screen">
+              <img src="assets/pydev-iphone-iris.png" width="476" height="565" alt="PyDev iPhone companion notebook view">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -947,8 +1155,8 @@ df.head()</code></pre>
 
     <section class="section" aria-labelledby="cta-title">
       <div class="final-cta">
-        <h2 id="cta-title">Build notebooks where your files already live.</h2>
-        <p class="lead">PyDev brings a local Python workspace, Apple-platform UI, and a controlled package registry into one app experience.</p>
+        <h2 id="cta-title">Build notebooks where your files and AI tools already live.</h2>
+        <p class="lead">PyDev brings an iPadOS-first Python workspace, Apple Intelligence, provider-based AI, and a controlled package registry into one app experience.</p>
         <div class="hero-actions" style="justify-content:center">
           <a class="button primary" href="https://github.com/zhiluo20/pydev-wheelhouse">Open GitHub</a>
           <a class="button secondary" href="README.md">Read docs</a>
