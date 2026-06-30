@@ -1,10 +1,10 @@
-# PyDev Wheelhouse
+# Vibeit Wheelhouse
 
-Static package registry for the PyDev iOS/macOS app.
+Static package registry for the Vibeit iOS/macOS app.
 
 ## App catalog
 
-Use this catalog URL in PyDev Packages:
+Use this catalog URL in Vibeit Packages:
 
 ```text
 https://raw.githubusercontent.com/zhiluo20/pydev-wheelhouse/main/catalog/v1/index.json
