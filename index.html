@@ -873,6 +873,49 @@
         flex-direction: column;
       }
     }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .price-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 32px;
+      border-radius: var(--radius);
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .price-card.featured {
+      background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 12%, var(--surface-strong)), var(--surface-strong));
+      border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    }
+    .price-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .price-name { font-size: 22px; font-weight: 700; }
+    .price-badge {
+      font-size: 12px; font-weight: 700;
+      color: var(--accent); background: var(--soft-blue);
+      padding: 5px 11px; border-radius: 999px; white-space: nowrap;
+    }
+    .price-amount { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+    .price-amount span { font-size: 16px; font-weight: 600; color: var(--muted); }
+    .price-alt { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    .price-trial { font-size: 13px; font-weight: 700; color: var(--accent); }
+    .price-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+    .price-list li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.45; }
+    .price-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+    .price-list li.muted { color: var(--muted); }
+    .price-list li.muted::before { content: "–"; color: var(--muted); }
+    .price-card .button { margin-top: auto; }
+    .price-note { color: var(--muted); font-size: 13px; margin-top: 16px; text-align: center; }
+    @media (max-width: 720px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -888,6 +931,7 @@
         <a href="#screenshots">Screenshots</a>
         <a href="#tutorial">Tutorial</a>
         <a href="#packages">Packages</a>
+        <a href="#pricing">Pricing</a>
         <a href="#repositories">Repos</a>
         <a class="nav-cta" href="https://github.com/zhiluo20/pydev-wheelhouse">GitHub</a>
       </div>
@@ -1151,6 +1195,59 @@ df.head()</code></pre>
           <a href="simple-ios/iphoneos/">Browse iPhoneOS</a>
         </article>
       </div>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <h2 id="pricing-title">Two plans. Start free for 7 days.</h2>
+      <p class="lead">Standard unlocks the full local Python IDE, the bundled scientific and ML stack, and every guided lesson. Pro adds remote servers, GitHub, cloud AI providers, and the autonomous coding agent — everything that reaches beyond the device.</p>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <div class="price-head">
+            <span class="price-name">Standard</span>
+            <span class="price-trial">7-day free trial</span>
+          </div>
+          <div>
+            <div class="price-amount">$10<span> / month</span></div>
+            <div class="price-alt">or $25 / quarter · $80 / year — save 33%</div>
+          </div>
+          <ul class="price-list">
+            <li>Local notebooks &amp; Python scripts with the embedded interpreter</li>
+            <li>NumPy, pandas, SciPy, scikit-learn, Matplotlib</li>
+            <li>PyTorch, torchvision, torchaudio &amp; Transformers on-device</li>
+            <li>Example Gallery — guided lessons in 7 languages</li>
+            <li>Package registry + on-device install (pure-Python wheels)</li>
+            <li>Files app workspace · HTML / PDF / Python export</li>
+            <li>On-device code intelligence + Apple Intelligence assist</li>
+            <li>Local version control (stage / commit / diff)</li>
+            <li class="muted">Remote SSH / SFTP servers</li>
+            <li class="muted">GitHub clone / push / pull / PRs</li>
+            <li class="muted">Cloud AI providers &amp; coding agent</li>
+          </ul>
+          <a class="button secondary" href="#top">Start with Standard</a>
+        </article>
+        <article class="price-card featured">
+          <div class="price-head">
+            <span class="price-name">Pro</span>
+            <span class="price-badge">Everything unlocked</span>
+          </div>
+          <div>
+            <div class="price-amount">$30<span> / month</span></div>
+            <div class="price-alt">or $68 / quarter · $200 / year — save 44%</div>
+          </div>
+          <div class="price-trial">7-day free trial</div>
+          <ul class="price-list">
+            <li>Everything in Standard, plus:</li>
+            <li>Remote workspaces — SSH / SFTP, remote kernel, terminal, port forwarding, Cloudflare Access</li>
+            <li>GitHub — clone, push, pull, open pull requests (OAuth)</li>
+            <li>Remote Git &amp; remote package management</li>
+            <li>Cloud AI providers — Claude, OpenAI Codex, custom endpoints</li>
+            <li>Autonomous coding agent — multi-file edits, runs code, commits</li>
+            <li>Priority updates &amp; early access</li>
+          </ul>
+          <a class="button primary" href="#top">Go Pro</a>
+        </article>
+      </div>
+      <p class="price-note">Prices shown in USD; regional prices are set per App Store storefront. Subscriptions renew automatically and can be cancelled anytime in Settings.</p>
     </section>
 
     <section class="section" aria-labelledby="cta-title">
